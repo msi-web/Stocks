@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Side-by-Side TradingView Tickers - Responsive</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+    }
+    .ticker-row {
+      display: flex;
+      gap: 24px;
+      justify-content: flex-start; 
+      margin-left: 25px;
+      align-items: flex-start;
+      margin-bottom: 32px; /* space underneath row */
+      flex-wrap: wrap;
+    }
+    .tradingview-widget-container {
+      flex: 1 1 200px;
+      min-width: 150px;
+      max-width: 400px;
+    }
+    .ticker-tape-row {
+      display: flex;
+      margin-left: 25px;
+    }
+    .ticker-tape-row .tradingview-widget-container {
+      /* The tape widget should fill the width of the three widgets plus two gaps */
+      flex: 0 0 calc(3 * 400px + 2 * 24px); /* max width * 3 plus gaps */
+      max-width: calc(3 * 400px + 2 * 24px);
+      min-width: 0;
+      width: 100%;
+    }
+    /* Responsive: Go full width on small screens */
+    @media (max-width: 1300px) {
+      .ticker-tape-row .tradingview-widget-container {
+        flex-basis: 100vw;
+        max-width: 100vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <p style="margin-left: 75px; font-size: 50px;">Key Stock Prices</p>
+  <div class="ticker-row">
+    <!-- LAC Ticker -->
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+      {
+        "symbol": "NYSE:LAC",
+        "colorTheme": "dark",
+        "isTransparent": false,
+        "locale": "en",
+        "width": "100%"
+      }
+      </script>
+    </div>
+    <!-- MP Ticker -->
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+      {
+        "symbol": "NYSE:MP",
+        "colorTheme": "dark",
+        "isTransparent": false,
+        "locale": "en",
+        "width": "100%"
+      }
+      </script>
+    </div>
+    <!-- HL Ticker -->
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+      {
+        "symbol": "NYSE:HL",
+        "colorTheme": "dark",
+        "isTransparent": false,
+        "locale": "en",
+        "width": "100%"
+      }
+      </script>
+    </div>
+  </div>
+  <!-- TradingView Ticker Tape Widget in its own row, as wide as the three above -->
+  <div class="ticker-tape-row">
+    <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+      {
+        "symbols": [
+          { "proName": "NYSE:LAC", "title": "LAC" },
+          { "proName": "NYSE:MP", "title": "MP Materials " },
+          { "proName": "NASDAQ:AAPL", "title": "Apple" },
+          { "proName": "NYSE:HL", "title": "Hecla Mining Company" },
+          { "proName": "NASDAQ:INTC", "title": "Intel" },
+          { "proName": "NASDAQ:USAU", "title": "US Gold Corp" },
+          { "proName": "NASDAQ:CURI", "title": "Curiosity Stream" },
+          { "proName": "NASDAQ:SWPPX", "title": "Swab" },
+          { "proName": "NASDAQ:TMUS", "title": "T-Mobile" },
+          { "proName": "NYSE:USM", "title": "UScellular" }
+        ],
+        "colorTheme": "dark",
+        "locale": "en",
+        "largeChartUrl": "",
+        "isTransparent": false,
+        "showSymbolLogo": true,
+        "displayMode": "adaptive"
+      }
+      </script>
+    </div>
+  </div>
+</body>
+</html>
